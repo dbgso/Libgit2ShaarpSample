@@ -28,13 +28,13 @@ namespace GitTest
 			foreach(FileInfo fileInfo in sourceDirectory.GetFiles()) 
 			{
 				//同じファイルが存在していたら、常に上書きする
-				fileInfo.CopyTo(destinationDirectory.FullName + @"/" + fileInfo.Name, true);
+				fileInfo.CopyTo(Path.Combine(destinationDirectory.FullName, fileInfo.Name), true);
 			}
 
 			//ディレクトリのコピー（再帰を使用）
 			foreach(System.IO.DirectoryInfo directoryInfo in sourceDirectory.GetDirectories())
 			{
-				DirectoryCopy(directoryInfo.FullName, destinationDirectory.FullName + @"/" + directoryInfo.Name);
+				DirectoryCopy (directoryInfo.FullName, Path.Combine (destinationDirectory.FullName, directoryInfo.Name));
 			}
 		}
 	}
